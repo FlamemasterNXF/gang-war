@@ -1,61 +1,80 @@
 :root {
-  --bg: #000000;
-  --text: #5f6368;
+    --bg: #000000;
+    --text: #5f6368;
 }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
 }
 
 p {
-  margin: 0;
-  color: var(--text);
+    margin: 0;
+    color: var(--text);
 }
 
-.flexbox{
-  display: flex;
-  align-items: center;
-  place-content: center;
-  flex-wrap: wrap;
+.flexbox {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    flex-wrap: wrap;
 }
 
 .column {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .row {
-  flex-direction: row;
+    flex-direction: row;
 }
 
-.centeredText{
-  text-align: center;
+.centeredText {
+    text-align: center;
 }
 
 form {
-  gap: 8px;
-  margin-top: 24px;
+    gap: 8px;
+    margin-top: 24px;
 }
 
 input,
-button {
-  border: 2px solid var(--text);
-  background: var(--bg);
-  color: var(--text);
-  padding: 8px;
+button,
+select {
+    border: 2px solid var(--text);
+    background: var(--bg);
+    color: var(--text);
+    padding: 8px;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+#playerContainer {
+    width: 100vw;
+    margin-top: 1rem;
 }
 
-li {
-  margin-top: 8px;
-  text-align: center;
+.gangRow {
+    border: 2px solid var(--text);
+    margin-top: 8px;
+    padding: 8px;
+    place-items: flex-start;
+}
+
+.gangRow h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.playerRow {
+    display: flex;
+    gap: 8px;
+}
+
+.player {
+    border: 2px solid var(--text);
+    min-width: 160px;
+    padding: 8px;
 }

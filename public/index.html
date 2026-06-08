@@ -1,21 +1,24 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Gang War</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css"/>
     <script type="module" src="/app.js"></script>
-  </head>
-  <body>
-    <div class="column flexbox">
-      <h1>Gang War</h1>
-      <p class="centeredText" id="test">gwa</p>
-      <form id="playerForm" class="row flexbox">
-        <input id="playerName" name="playerName" placeholder="Player name" autocomplete="off" />
+</head>
+<body>
+<div class="column flexbox">
+    <h1>Gang War</h1>
+    <p class="centeredText" id="status">all good :p</p>
+    <form id="playerForm" class="row flexbox">
+        <input id="playerName" name="playerName" placeholder="Player name" autocomplete="off"/>
         <button type="submit">Add Player</button>
-      </form>
-      <ul id="players"></ul>
+    </form>
+    <div class="row flexbox">
+        <label for="actorId">Acting as:</label><select id="actorId"></select>
     </div>
-  </body>
+    <div id="playerContainer"></div>
+</div>
+</body>
 </html>

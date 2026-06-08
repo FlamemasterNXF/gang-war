@@ -1,0 +1,30 @@
+:root {
+  --bg: #000000;
+  --text: #5f6368;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+p {
+  margin: 0;
+  color: var(--text);
+}
+
+.flexbox{
+  display: flex;
+  align-items: center;
+  place-content: center;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.centeredText{
+  text-align: center;
+}

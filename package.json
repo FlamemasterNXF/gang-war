@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "run": "node src/server.js",
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
     "express": "^5.1.0"

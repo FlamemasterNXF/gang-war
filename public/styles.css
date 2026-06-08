@@ -25,6 +25,37 @@ p {
   flex-direction: column;
 }
 
+.row {
+  flex-direction: row;
+}
+
 .centeredText{
+  text-align: center;
+}
+
+form {
+  gap: 8px;
+  margin-top: 24px;
+}
+
+input,
+button {
+  border: 2px solid var(--text);
+  background: var(--bg);
+  color: var(--text);
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-top: 8px;
   text-align: center;
 }

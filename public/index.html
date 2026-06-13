@@ -9,14 +9,14 @@
 </head>
 <body>
 <div class="column flexbox">
-    <h1>Gang War</h1>
+    <p id="title">Gang War</p>
     <p class="centeredText" id="status">all good :p</p>
-    <form id="playerForm" class="row flexbox">
-        <input id="playerName" name="playerName" placeholder="Player name" autocomplete="off"/>
-        <button type="submit">Add Player</button>
-    </form>
     <div class="row flexbox">
-        <label for="actorId">Acting as:</label><select id="actorId"></select>
+        <form id="playerForm" style="margin: 0;">
+            <input id="playerName" name="playerName" placeholder="Player name" autocomplete="off"/>
+            <button type="submit">Log In</button>
+        </form>
+        <button id="logoutButton" type="button">Log Out</button>
     </div>
     <div id="playerContainer"></div>
 </div>

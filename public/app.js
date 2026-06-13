@@ -1,22 +1,40 @@
 const statusElement = document.getElementById("status");
 const playerForm = document.getElementById("playerForm");
 const playerName = document.getElementById("playerName");
-const actorSelect = document.getElementById("actorId");
+const logoutButton = document.getElementById("logoutButton");
 const playersElement = document.getElementById("playerContainer");
 
+let currentPlayer = null;
+
 function reportError(error){
-    statusElement.innerHTML = `Death D:<br>${error.message}`;
+    statusElement.innerHTML = `${error.message}`;
+}
+
+function updateLoginStatus(){
+    statusElement.innerHTML = currentPlayer
+        ? `Logged in as ${currentPlayer.name}<br>${currentPlayer.gang}`
+        : "";
 }
 
 async function loadPlayers() {
+    await loadMe();
+
     const response = await fetch("/api/players");
     const data = await response.json();
 
     makePlayerHTML(data.players);
 }
 
-async function addPlayer(name) {
-    const response = await fetch("/api/players", {
+async function loadMe() {
+    const response = await fetch("/api/player");
+    const data = await response.json();
+
+    currentPlayer = data.player;
+    updateLoginStatus();
+}
+
+async function login(name) {
+    const response = await fetch("/api/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -30,7 +48,19 @@ async function addPlayer(name) {
         throw new Error(data.error);
     }
 
+    currentPlayer = data.player;
+    updateLoginStatus();
     makePlayerHTML(data.players);
+}
+
+async function logout() {
+    await fetch("/api/logout", {
+        method: "POST"
+    });
+
+    currentPlayer = null;
+    updateLoginStatus();
+    await loadPlayers();
 }
 
 async function playerAction(action, targetId, amount = 1) {
@@ -40,7 +70,6 @@ async function playerAction(action, targetId, amount = 1) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            actorId: actorSelect.value,
             targetId,
             amount
         })
@@ -56,16 +85,7 @@ async function playerAction(action, targetId, amount = 1) {
 }
 
 function makePlayerHTML(players) {
-    const selectedActorId = actorSelect.value;
     const gangs = groupPlayersByGang(players);
-
-    actorSelect.innerHTML = players
-        .map((player) => `<option value="${player.id}">${player.name}</option>`)
-        .join("");
-
-    actorSelect.value = players.some((player) => String(player.id) === selectedActorId)
-        ? selectedActorId
-        : String(players[0]?.id ?? "");
 
     playersElement.innerHTML = gangs
         .map((gang) => {
@@ -117,9 +137,17 @@ playerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     try {
-        await addPlayer(playerName.value);
+        await login(playerName.value);
         playerName.value = "";
         playerName.focus();
+    } catch (error) {
+        reportError(error);
+    }
+});
+
+logoutButton.addEventListener("click", async () => {
+    try {
+        await logout();
     } catch (error) {
         reportError(error);
     }

@@ -65,6 +65,16 @@ export function getPlayer(id) {
     return row ? rowToPlayer(row) : undefined;
 }
 
+export function getPlayerByName(name) {
+    const row = db.prepare(`
+        SELECT id, name, gang, ap, hp
+        FROM players
+        WHERE lower(name) = lower(?)
+    `).get(name.trim());
+
+    return row ? rowToPlayer(row) : undefined;
+}
+
 function requirePlayer(id) {
     const player = getPlayer(id);
 

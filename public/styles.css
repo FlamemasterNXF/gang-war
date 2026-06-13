@@ -78,3 +78,12 @@ button {
     min-width: 160px;
     padding: 8px;
 }
+
+#title{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+#status {
+    margin: 0.5rem;
+}

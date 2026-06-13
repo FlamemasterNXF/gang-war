@@ -10,6 +10,12 @@ export function initDb() {
             gang TEXT NOT NULL,
             ap INTEGER NOT NULL,
             hp INTEGER NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS sessions (
+            id TEXT PRIMARY KEY,
+            player_id INTEGER NOT NULL REFERENCES players(id) ON DELETE CASCADE,
+            expires_at TEXT NOT NULL
         )
     `);
 }
